@@ -1,0 +1,58 @@
+ fs-containers-main  docker ps -a
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS                        PORTS                                     NAMES
+6c06efd421f0   ubuntu                   "bash"                   9 minutes ago   Exited (0) 6 minutes ago                                                strange_mclean
+4d4257c40e63   node:22-alpine           "docker-entrypoint.s…"   11 days ago     Exited (255) 17 minutes ago   0.0.0.0:5173->5173/tcp                    vite_dev
+ba44eec49875   ideailuminacion-app      "apachectl -D FOREGR…"   11 days ago     Exited (255) 17 minutes ago   0.0.0.0:80->80/tcp                        laravel_app
+96f268fd1a94   phpmyadmin               "/docker-entrypoint.…"   11 days ago     Up 17 minutes                 0.0.0.0:8080->80/tcp                      phpmyadmin-container
+898dd5b821da   mysql:8.2                "docker-entrypoint.s…"   11 days ago     Up 17 minutes (healthy)       33060/tcp, 0.0.0.0:3307->3306/tcp         mysql82-container
+6465b93bc9d0   mysql/mysql-server:8.0   "/entrypoint.sh mysq…"   11 days ago     Exited (255) 17 minutes ago   0.0.0.0:3306->3306/tcp, 33060-33061/tcp   ideailuminacion-mysql-1
+d9b85f2e11fd   adminer                  "entrypoint.sh php -…"   21 months ago   Exited (128) 2 months ago                                               task-list-adminer-1
+a6d3cd7d3406   mariadb:10.8.3           "docker-entrypoint.s…"   21 months ago   Exited (128) 2 months ago                                               task-list-mysql-1
+ fs-containers-main  docker start -i strange_mclean
+root@6c06efd421f0:/# apt-get update
+apt-get install -y nano
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Get:2 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+Get:3 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1944 kB]
+Get:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Get:6 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages [117 kB]
+Get:7 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages [1808 kB]
+Get:8 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [3406 kB]
+Get:9 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [34.8 kB]
+Get:10 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1262 kB]
+Get:11 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [331 kB]
+Get:12 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+Get:13 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [2030 kB]
+Get:14 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [38.1 kB]
+Get:15 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [2327 kB]
+Get:16 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [3585 kB]
+Get:17 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [49.5 kB]
+Get:18 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages [695 B]
+Get:19 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [36.1 kB]
+Fetched 36.9 MB in 6s (6324 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Suggested packages:
+  hunspell
+The following NEW packages will be installed:
+  nano
+0 upgraded, 1 newly installed, 0 to remove and 8 not upgraded.
+Need to get 282 kB of archives.
+After this operation, 856 kB of additional disk space will be used.
+Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 nano amd64 7.2-2ubuntu0.1 [282 kB]
+Fetched 282 kB in 2s (179 kB/s)
+debconf: delaying package configuration, since apt-utils is not installed
+Selecting previously unselected package nano.
+(Reading database ... 4381 files and directories currently installed.)
+Preparing to unpack .../nano_7.2-2ubuntu0.1_amd64.deb ...
+Unpacking nano (7.2-2ubuntu0.1) ...
+Setting up nano (7.2-2ubuntu0.1) ...
+update-alternatives: using /bin/nano to provide /usr/bin/editor (editor) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/editor.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group editor) doesn't exist
+update-alternatives: using /bin/nano to provide /usr/bin/pico (pico) in auto mode
+update-alternatives: warning: skip creation of /usr/share/man/man1/pico.1.gz because associated file /usr/share/man/man1/nano.1.gz (of link group pico) doesn't exist
+root@6c06efd421f0:/# nano /usr/src/app/index.js
+root@6c06efd421f0:/# exit

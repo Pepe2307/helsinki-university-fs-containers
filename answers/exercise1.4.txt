@@ -1,0 +1,17 @@
+ fs-containers-main  docker exec -it strange_mclean bash -c "export DEBIAN_FRONTEND=noninteractive && apt-get install -y nodejs"
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nodejs is already the newest version (24.13.0-1nodesource1).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug strange_mclean
+  Learn more at https://docs.docker.com/go/debug-cli/
+ fs-containers-main  docker exec -it strange_mclean node /usr/src/app/index.js
+Hello World
+
+What's next?
+  Try Docker Debug for seamless, persistent debugging tools in any container or image → docker debug strange_mclean
+  Learn more at https://docs.docker.com/go/debug-cli/
+ pablo   fs-containers-main   main ≡  ?3  CONFIG NOT FOUND                                in pwsh at 14:41:58
