@@ -1,0 +1,8 @@
+ todo-backend  Invoke-RestMethod -Uri "http://localhost:3000/statistics"
+
+added_todos
+-----------
+        555
+
+
+ pablo   todo-backend   main ≡  ?6 ~2 -4  CONFIG NOT FOUND        

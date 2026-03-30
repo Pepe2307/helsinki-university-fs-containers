@@ -1,0 +1,38 @@
+// 1. Manual access and manipulation
+docker exec -it todo-backend-redis-1 redis-cli
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET added_todos
+"1"
+127.0.0.1:6379> SET added_todos 9001
+OK
+127.0.0.1:6379> GET added_todos
+"9001"
+
+// 2. Verifying increment via the Application
+Invoke-RestMethod -Uri "http://localhost:3000/todos" -Method Post -Body (@{text="Verifying counter"; done=$false} | ConvertTo-Json) -ContentType "application/json"
+
+// Check Redis to see the increment (from 555 to 556 in my current session)
+docker exec -it todo-backend-redis-1 redis-cli GET added_todos
+"556"
+
+// 3. Deletion and Reset (DEL)
+docker exec -it todo-backend-redis-1 redis-cli DEL added_todos
+(integer) 1
+
+// Verify that the counter restarts after creating a new todo
+Invoke-RestMethod -Uri "http://localhost:3000/todos" -Method Post -Body (@{text="Restarting counter"; done=$false} | ConvertTo-Json) -ContentType "application/json"
+
+docker exec -it todo-backend-redis-1 redis-cli GET added_todos
+"1"
+
+
+ todo-backend  docker exec -it todo-backend-redis-1 redis-cli
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET added_todos
+"1"
+127.0.0.1:6379> SET added_todos 9001
+OK
+127.0.0.1:6379> GET added_todos
+"9001"

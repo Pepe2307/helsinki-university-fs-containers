@@ -1,0 +1,7 @@
+root@6c06efd421f0:/# mkdir -p /usr/src/app
+root@6c06efd421f0:/# apt-get update && apt-get install -y nano
+root@6c06efd421f0:/# nano /usr/src/app/index.js
+(Inside nano, I wrote: console.log('Hello World'))
+
+root@6c06efd421f0:/# cat /usr/src/app/index.js
+console.log('Hello World')

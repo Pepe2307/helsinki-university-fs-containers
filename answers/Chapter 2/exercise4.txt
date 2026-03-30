@@ -1,0 +1,49 @@
+ todo-backend  docker start -i strange_mclean
+root@6c06efd421f0:/# apt-get install -y curl
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+curl is already the newest version (8.5.0-2ubuntu10.8).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+root@6c06efd421f0:/# curl -sL https://deb.nodesource.com/setup_24.x | bash
+2026-03-30 01:29:31 - Installing pre-requisites
+Hit:1 https://deb.nodesource.com/node_24.x nodistro InRelease
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:3 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+10 packages can be upgraded. Run 'apt list --upgradable' to see them.
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+apt-transport-https is already the newest version (2.8.3).
+ca-certificates is already the newest version (20240203).
+curl is already the newest version (8.5.0-2ubuntu10.8).
+gnupg is already the newest version (2.4.4-2ubuntu17.4).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+Hit:1 https://deb.nodesource.com/node_24.x nodistro InRelease
+Hit:2 http://archive.ubuntu.com/ubuntu noble InRelease
+Hit:3 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:4 http://archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:5 http://archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+10 packages can be upgraded. Run 'apt list --upgradable' to see them.
+2026-03-30 01:29:43 - Repository configured successfully.
+2026-03-30 01:29:43 - To install Node.js, run: apt install nodejs -y
+2026-03-30 01:29:43 - You can use N|solid Runtime as a node.js alternative
+2026-03-30 01:29:43 - To install N|solid Runtime, run: apt install nsolid -y
+
+root@6c06efd421f0:/# apt install -y nodejs
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nodejs is already the newest version (24.13.0-1nodesource1).
+0 upgraded, 0 newly installed, 0 to remove and 10 not upgraded.
+root@6c06efd421f0:/# node /usr/src/app/index.js
+Hello World
+root@6c06efd421f0:/#

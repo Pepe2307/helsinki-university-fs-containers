@@ -1,0 +1,43 @@
+
+const findByIdMiddleware = async (req, res, next) => {
+  const { id } = req.params
+  req.todo = await Todo.findById(id)
+  if (!req.todo) return res.sendStatus(404)
+  next()
+}
+
+singleRouter.get('/', async (req, res) => {
+  res.send(req.todo);
+});
+
+singleRouter.put('/', async (req, res) => {
+  const { text, done } = req.body;
+  if (text !== undefined) req.todo.text = text;
+  if (done !== undefined) req.todo.done = done;
+  await req.todo.save();
+  res.send(req.todo);
+});
+
+
+ todo-backend  Invoke-RestMethod -Uri "http://localhost:3000/todos/69c6c31365fc0b67eed805db" -Method Get
+
+_id                      text       done
+---                      ----       ----
+69c6c31365fc0b67eed805db Write code True
+
+
+ todo-backend  Invoke-RestMethod -Uri "http://localhost:3000/todos/69c6c31365fc0b67eed805db" -Method Put -Body (@{done=$true} | ConvertTo-Json) -ContentType "application/json"
+
+_id                      text       done
+---                      ----       ----
+69c6c31365fc0b67eed805db Write code True
+
+
+ todo-backend  Invoke-RestMethod -Uri "http://localhost:3000/todos/69c6c31365fc0b67eed805db" -Method Get
+
+_id                      text       done
+---                      ----       ----
+69c6c31365fc0b67eed805db Write code True
+
+
+ pablo   todo-backend   main ≡  ?8 ~2  CONFIG NOT FOUND       
