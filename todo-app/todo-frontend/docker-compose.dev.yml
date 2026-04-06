@@ -1,0 +1,15 @@
+services:
+  app:
+    image: todo-frontend-dev
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./:/usr/src/app
+      # Este volumen anónimo evita que los node_modules del contenedor 
+      # se sobrescriban con los de tu host (Windows)
+      - /usr/src/app/node_modules
+    ports:
+      - 5173:5173
+    environment:
+      - VITE_BACKEND_URL=http://localhost:8080/api
