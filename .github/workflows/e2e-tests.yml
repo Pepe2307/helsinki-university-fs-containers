@@ -2,7 +2,6 @@ name: E2E Tests
 
 on:
   push:
-    # branches: [ xmain, xmaster ]
     branches: [ main, master ]
 
 jobs:
@@ -25,7 +24,7 @@ jobs:
 
       - name: Build todo-frontend image
         working-directory: ./todo-app/todo-frontend
-        run: docker build -t todo-front -f Dockerfile .
+        run: docker build -t todo-front -f Dockerfile --build-arg VITE_BACKEND_URL=http://localhost:8080/api .
 
       - name: Start todo-app with Docker Compose
         working-directory: ./todo-app
@@ -72,12 +71,8 @@ jobs:
         if: failure()
         working-directory: ./todo-app
         run: |
-          echo "=== Backend logs ==="
-          docker compose logs backend
-          echo "=== Frontend logs ==="
-          docker compose logs app
-          echo "=== Nginx logs ==="
-          docker compose logs nginx
+          echo "=== All service logs ==="
+          docker compose logs --no-color
 
       - name: Clean up Docker containers
         if: always()
