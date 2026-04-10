@@ -9,12 +9,20 @@ const TodoForm = ({ createTodo }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    createTodo({ text })
+    if (text.trim()) {
+      createTodo({ text })
+      setText('')
+    }
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" name="text" value={text} onChange={onChange} />
+      <input 
+        type="text" 
+        name="text" 
+        value={text} 
+        onChange={onChange}
+      />
       <button type="submit"> Submit </button>
     </form>
   )
