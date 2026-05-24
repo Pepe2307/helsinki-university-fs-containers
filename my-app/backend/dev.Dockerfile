@@ -24,8 +24,7 @@ COPY . .
 
 RUN composer install
 
-RUN cp .env.example .env && php artisan key:generate
-
 RUN chmod -R 777 storage bootstrap/cache
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# At container startup: create .env if missing, run migrations, then start server
+CMD ["sh", "-c", "[ ! -f .env ] && cp .env.example .env && php artisan key:generate; php artisan migrate --force; php artisan serve --host=0.0.0.0 --port=8000"]

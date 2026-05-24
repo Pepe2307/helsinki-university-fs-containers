@@ -21,8 +21,7 @@ COPY . .
 
 RUN composer install --optimize-autoloader --no-dev
 
-RUN cp .env.example .env && php artisan key:generate
-
 RUN chmod -R 777 storage bootstrap/cache
 
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Generate .env and run migrations at startup (no volume override in production)
+CMD ["sh", "-c", "cp .env.example .env && php artisan key:generate && php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=8000"]
