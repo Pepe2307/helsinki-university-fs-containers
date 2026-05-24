@@ -5,7 +5,7 @@ services:
       context: ./todo-frontend
       dockerfile: Dockerfile
       args:
-        - VITE_BACKEND_URL=http://localhost:8080/api
+        - VITE_BACKEND_URL=/api
 
   server:
     image: todo-backend
