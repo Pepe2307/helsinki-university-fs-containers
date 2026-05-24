@@ -1,12 +1,9 @@
-# Exercise 14: Security and Image Optimization
+Extracted Todo component to todo-app/todo-frontend/src/Todos/Todo.jsx
+Added tests in todo-app/todo-frontend/src/Todos/Todo.test.jsx using Vitest and React Testing Library
+Added test stage to todo-app/todo-frontend/Dockerfile:
 
-# 1. Implemented a non-root user (nginx) to run the application.
-# 2. Adjusted permissions for Nginx system folders (/var/cache/nginx, /var/run/nginx.pid) 
-#    to allow the unprivileged user to write logs and PID files.
-# 3. Created a .dockerignore file to reduce build context size.
+FROM build-stage AS test-stage
+RUN npm test
 
-# Command to build:
-$ docker build --build-arg VITE_BACKEND_URL="http://localhost:3000/api" -t todo-frontend -f todo-app/todo-frontend/Dockerfile todo-app/todo-frontend/
-
-# Verification of non-root execution (from container logs):
-# nginx: [warn] the "user" directive makes sense only if the master process runs with super-user privileges, ignored in /etc/nginx/nginx.conf:2
+Production stage copies from test-stage to ensure only tested code is deployed:
+COPY --from=test-stage /usr/src/app/dist /usr/share/nginx/html
